@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/Accion.spritefont</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/Asteroid.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/black_hole.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/disparo_rayo.wav</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/energy.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/energyShield.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/etfx_shoot_mystic.wav</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/fondo.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/Instrucciones.spritefont</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/MainGameSoundTrack.ogg</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/rayo.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/ship.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/space_intro.jpg</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/timer.png</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/Titulo.spritefont</File>
+    <File>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/vida.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
