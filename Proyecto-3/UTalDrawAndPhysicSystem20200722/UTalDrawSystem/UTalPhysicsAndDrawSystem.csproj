@@ -46,6 +46,7 @@
     <Compile Include="MyGame\Background.cs" />
     <Compile Include="MyGame\Coleccionable.cs" />
     <Compile Include="MyGame\Asteroide.cs" />
+    <Compile Include="MyGame\PlanetaCuadrado.cs" />
     <Compile Include="MyGame\Proyectil.cs" />
     <Compile Include="MyGame\VentanaManager.cs" />
     <Compile Include="MyGame\Juego.cs" />

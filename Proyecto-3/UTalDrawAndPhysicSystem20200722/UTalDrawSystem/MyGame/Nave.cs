@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using UTalDrawSystem.SistemaAudio;
 using UTalDrawSystem.SistemaGameObject;
 
 namespace UTalDrawSystem.MyGame
@@ -122,6 +123,7 @@ namespace UTalDrawSystem.MyGame
                 powerUpTotales++;
                 Game1.INSTANCE.ventanaJuego.score += 1000;
 
+                AudioManager.Play(AudioManager.Sounds.Slurp);
                 if (buffLevel < 5)
                 {
                     buffLevel++;

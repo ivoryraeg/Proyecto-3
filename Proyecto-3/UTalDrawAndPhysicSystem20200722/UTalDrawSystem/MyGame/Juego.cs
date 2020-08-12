@@ -29,6 +29,7 @@ namespace UTalDrawSystem.MyGame
         Texture2D vidasIcon;
         Texture2D powerUpIcon;
         Texture2D asteroidIcon;
+        Texture2D fondoPausa;
 
 
         int difficultyLevel;
@@ -40,6 +41,7 @@ namespace UTalDrawSystem.MyGame
 
         public Nave ship;
         List<Background> listaFondo;
+        List<PlanetaCuadrado> listaPlanetas;
         List<Asteroide> listaAsteroides;
         List<Agujero> listaAgujeros;
         List<Coleccionable> listaEnergy;
@@ -51,13 +53,15 @@ namespace UTalDrawSystem.MyGame
         bool collision_on;
         bool ganoVidas;
         public double time { private set; get; }
+        double timeSpawnPlanet;
+        double planetSpawnRange;
         double timeSpawnAsteroides;
         double timeSpawnAgujeros;
         double timeSpawnEnergy;
-        double pauseTimer;
         int posYEnergy;
 
         public bool paused;
+        bool isPauseKeyPressed;
 
         public Juego(ContentManager content)
         {
@@ -75,12 +79,15 @@ namespace UTalDrawSystem.MyGame
             powerUpIcon = content.Load<Texture2D>("energy");
             asteroidIcon = content.Load<Texture2D>("Asteroid");
 
+            fondoPausa = content.Load<Texture2D>("img");
+
             difficultyLevel = 1;
             cameraSpeed = 6;
 
             score = 0;
 
             listaFondo = new List<Background>();
+            listaPlanetas = new List<PlanetaCuadrado>();
             listaAsteroides = new List<Asteroide>();
             listaAgujeros = new List<Agujero>();
             listaEnergy = new List<Coleccionable>();
@@ -92,6 +99,8 @@ namespace UTalDrawSystem.MyGame
             rnd = new Random();
             time = 0;
             timeChangeDifficulty = 0;
+            timeSpawnPlanet = 0;
+            planetSpawnRange = rnd.Next(60,80);
             timeSpawnAsteroides = 0;
             timeSpawnAgujeros = 0;
             timeSpawnEnergy = 0;
@@ -106,31 +115,36 @@ namespace UTalDrawSystem.MyGame
             listaFondo.Add(new Background("fondo", new Vector2(camara.pos.X + Game1.INSTANCE.GraphicsDevice.Viewport.Width * 2, camara.pos.Y + Game1.INSTANCE.GraphicsDevice.Viewport.Height), 2, UTGameObject.FF_form.Rectangulo, true, false, true));
 
             paused = false;
-            pauseTimer = 0;
+            isPauseKeyPressed = false;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.P) && !paused)
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
             {
-                paused = true;
-                //pauseTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (!paused && !isPauseKeyPressed)
+                {
+                    isPauseKeyPressed = true;
+                    paused = true;
+                }
+                else if (paused && !isPauseKeyPressed)
+                {
+                    isPauseKeyPressed = true;
+                    paused = false;
+                }
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.O) && paused /*&& pauseTimer >= 5*/)
+            else if (Keyboard.GetState().IsKeyUp(Keys.P))
             {
-                paused = false;
-                //pauseTimer = 0;
+                isPauseKeyPressed = false;
             }
-
-
 
             if (!paused)
             {
-
                 time += gameTime.ElapsedGameTime.TotalSeconds;
                 timeChangeDifficulty += gameTime.ElapsedGameTime.TotalSeconds;
+                timeSpawnPlanet += gameTime.ElapsedGameTime.TotalSeconds;
                 timeSpawnAsteroides += gameTime.ElapsedGameTime.TotalSeconds;
                 timeSpawnAgujeros += gameTime.ElapsedGameTime.TotalSeconds;
                 timeSpawnEnergy += gameTime.ElapsedGameTime.TotalSeconds;
@@ -138,8 +152,18 @@ namespace UTalDrawSystem.MyGame
                 camara.pos.X += cameraSpeed;
 
             }
-            
+            else
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.R))
+                {
+                    Game1.INSTANCE.ChangeScene(Game1.Scene.Game);
+                }
 
+                if (Keyboard.GetState().IsKeyDown(Keys.M))
+                {
+                    Game1.INSTANCE.ChangeScene(Game1.Scene.Start);
+                }
+            }
 
 
             Console.WriteLine(paused);
@@ -247,7 +271,22 @@ namespace UTalDrawSystem.MyGame
                     listaFondo.Remove(listaFondo.First<Background>());
                 }
             }
-            
+
+            if (timeSpawnPlanet > planetSpawnRange)
+            {
+                listaPlanetas.Add(new PlanetaCuadrado("planetacuadrado", new Vector2(camara.pos.X + 600 + Game1.INSTANCE.GraphicsDevice.Viewport.Width * 2, rnd.Next((int)camara.pos.Y, (int)camara.pos.Y + Game1.INSTANCE.GraphicsDevice.Viewport.Height * 2)), 1.4f, UTGameObject.FF_form.Rectangulo, true, false, false));
+                timeSpawnPlanet = 0;
+                planetSpawnRange = rnd.Next(60,80);
+            }
+            if (listaPlanetas.Count > 0)
+            {
+                if (listaPlanetas.First<PlanetaCuadrado>().objetoFisico.pos.X < camara.pos.X - 600)
+                {
+                    listaPlanetas.First<PlanetaCuadrado>().Destroy();
+                    listaPlanetas.Remove(listaPlanetas.First<PlanetaCuadrado>());
+                }
+            }
+
             if (timeSpawnAgujeros > 4f)
             {
                 listaAgujeros.Add(new Agujero("black_hole", new Vector2(camara.pos.X + 600 + Game1.INSTANCE.GraphicsDevice.Viewport.Width * 2, rnd.Next((int)camara.pos.Y + 100, (int)camara.pos.Y - 100 + Game1.INSTANCE.GraphicsDevice.Viewport.Height * 2)), 1, UTGameObject.FF_form.Circulo, false));
@@ -366,6 +405,23 @@ namespace UTalDrawSystem.MyGame
             SB.DrawString(vidasActuales, "     x " + Game1.INSTANCE.ventanaJuego.ship.vidas, vidasPos, Color.White);
             SB.DrawString(powerUpLevel, "    Energy lvl: " + Game1.INSTANCE.ventanaJuego.ship.buffLevel, powerUpPos, Color.White);
             SB.DrawString(puntajeTotal, "    Score: " + Game1.INSTANCE.ventanaJuego.score, scorePos, Color.White);
+
+            if (paused)
+            {
+                Vector2 tituloPos = new Vector2(Game1.INSTANCE.GraphicsDevice.Viewport.Width / 2.33f, 100);
+                Vector2 resumePos = new Vector2(Game1.INSTANCE.GraphicsDevice.Viewport.Width / 2.8f, 200);
+                Vector2 restartPos = new Vector2(Game1.INSTANCE.GraphicsDevice.Viewport.Width / 2.8f, 300);
+                Vector2 mainMenuPos = new Vector2(Game1.INSTANCE.GraphicsDevice.Viewport.Width / 2.8f, 400);
+                Vector2 exitPos = new Vector2(Game1.INSTANCE.GraphicsDevice.Viewport.Width / 2.8f, 500);
+
+                SB.Draw(fondoPausa, new Vector2(0, 0), Color.White * 0.7f);
+
+                SB.DrawString(timer, " Pausa ", tituloPos, Color.White);
+                SB.DrawString(powerUpLevel, " [P]-> Volver al juego\n", resumePos, Color.White);
+                SB.DrawString(powerUpLevel, " [R]-> Reiniciar Juego\n", restartPos, Color.White);
+                SB.DrawString(powerUpLevel, " [M]-> Volver al menu principal.\n", mainMenuPos, Color.White);
+                SB.DrawString(powerUpLevel, " [Esc]-> Cerrar ventana de juego.\n ", exitPos, Color.White);
+            }
         }
 
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UTalDrawSystem.SistemaAudio;
 using UTalDrawSystem.SistemaGameObject;
 
 namespace UTalDrawSystem.MyGame
@@ -27,12 +28,10 @@ namespace UTalDrawSystem.MyGame
             if (hp <= 0)
             {
                 Game1.INSTANCE.ventanaJuego.score  += 100;
+                AudioManager.Play(AudioManager.Sounds.Pop, true);
                 Destroy();
             }
 
-
-            
-            Console.WriteLine(velActual);
             if (Game1.INSTANCE.ventanaJuego.paused)
             {
                 if (velActual == new Vector2 (0))
@@ -46,10 +45,8 @@ namespace UTalDrawSystem.MyGame
                 objetoFisico.AddVelocity(velActual);
                 velActual = new Vector2(0);
             }
-
-
         }
-
+        /*
         public override void OnCollision(UTGameObject other)
         {
             Asteroide ast = other as Asteroide;
@@ -59,6 +56,6 @@ namespace UTalDrawSystem.MyGame
                 //ast.objetoFisico.SetVelocity(objetoFisico.vel / 1);
             }
         }
-
+        */
     }
 }
