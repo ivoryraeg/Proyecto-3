@@ -32,7 +32,7 @@ namespace UTalDrawSystem.MyGame
 
         public Nave(ContentManager content, string imagen, Vector2 pos, float escala, FF_form forma, bool isStatic = false, bool isSuperior = true) : base(imagen, pos, escala, forma, isStatic, isSuperior)
         {
-            vidas = 50000000;
+            vidas = 5;
             nuevaVida = 5000;
             respawnPos = pos;
 
