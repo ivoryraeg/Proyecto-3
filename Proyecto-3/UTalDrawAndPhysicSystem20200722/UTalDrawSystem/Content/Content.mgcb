@@ -92,6 +92,24 @@
 /processorParam:TextureFormat=Color
 /build:fondo.png
 
+#begin hitmarker.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:hitmarker.wav
+
+#begin img.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:img.png
+
 #begin Instrucciones.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -104,6 +122,24 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:MainGameSoundTrack.ogg
+
+#begin planetacuadrado.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:planetacuadrado.png
+
+#begin pop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:pop.wav
 
 #begin rayo.png
 /importer:TextureImporter
@@ -128,6 +164,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:ship.png
+
+#begin slurp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:slurp.wav
 
 #begin space_intro.jpg
 /importer:TextureImporter

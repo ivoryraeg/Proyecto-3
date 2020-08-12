@@ -37,13 +37,14 @@ namespace UTalDrawSystem.MyGame
 
         public override void OnCollision(UTGameObject other)
         {
-            Asteroide ball = other as Asteroide;
+            Asteroide ast = other as Asteroide;
 
-            if (ball != null)
+            if (ast != null)
             {
-                ball.hp -= 1;
+                AudioManager.Play(AudioManager.Sounds.Hitmarker, true);
+                ast.hp -= 1;
 
-                //Console.WriteLine(ball.hp);
+                //Console.WriteLine(ast.hp);
                 isDestroyed = true;
                 Destroy();
             }

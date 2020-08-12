@@ -14,11 +14,11 @@ namespace UTalDrawSystem.SistemaAudio
         public static Dictionary<Sounds, SoundEffect> allOriginalSounds = new Dictionary<Sounds, SoundEffect>();
         public static Dictionary<string, Song> allMusicList = new Dictionary<string, Song>();
         public static string CurrentSongName { get; private set; }
-        public enum Sounds {Mystic, Disparo_1};
+        public enum Sounds {Mystic, Disparo_1, Pop, Hitmarker, Slurp, Explosion};
 
         static Dictionary<Sounds, string> soundNames = new Dictionary<Sounds, string>()
         {
-            {Sounds.Mystic,"etfx_shoot_mystic"},  {Sounds.Disparo_1,"disparo_rayo"}
+            {Sounds.Mystic,"etfx_shoot_mystic"},  {Sounds.Disparo_1,"disparo_rayo"}, {Sounds.Pop, "pop"}, {Sounds.Hitmarker, "hitmarker"}, {Sounds.Slurp, "slurp"}
         };
 
         public static void loadSoundEffect(Sounds soundKey)
@@ -27,6 +27,7 @@ namespace UTalDrawSystem.SistemaAudio
             try
             {
                 newSound = Game1.INSTANCE.Content.Load<SoundEffect>(soundNames[soundKey]);
+                SoundEffect.MasterVolume = 0.4f;
             }
             catch
             {
@@ -50,7 +51,6 @@ namespace UTalDrawSystem.SistemaAudio
             }
             else
             {
-                
                 loadSoundEffect(soundKey);
                 Play(soundKey);
             }
@@ -77,6 +77,7 @@ namespace UTalDrawSystem.SistemaAudio
                 {
                     MediaPlayer.IsRepeating = loop;
                     MediaPlayer.Play(allMusicList[songName]);
+                    MediaPlayer.Volume = 0.15f;
                     MediaPlayer.IsRepeating = loop;                    
                     CurrentSongName = songName;
                 }

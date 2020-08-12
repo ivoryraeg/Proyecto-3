@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/disparo_rayo.wav</SourceFile>
-  <SourceTime>2020-08-07T23:38:45-04:00</SourceTime>
-  <DestFile>C:/Users/Joako/Downloads/Taller-3-master(1)/Taller-3-master/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/bin/Windows/Content/disparo_rayo.xnb</DestFile>
-  <DestTime>2020-08-11T00:27:00.626761-04:00</DestTime>
+  <SourceFile>D:/Descargas/Proyecto-3-master/Proyecto-3-master/Proyecto-3/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/disparo_rayo.wav</SourceFile>
+  <SourceTime>2020-08-11T19:29:14-04:00</SourceTime>
+  <DestFile>D:/Descargas/Proyecto-3-master/Proyecto-3-master/Proyecto-3/UTalDrawAndPhysicSystem20200722/UTalDrawSystem/Content/bin/Windows/Content/disparo_rayo.xnb</DestFile>
+  <DestTime>2020-08-11T19:33:36.6478906-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T13:35:54-03:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
